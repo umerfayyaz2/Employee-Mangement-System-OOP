@@ -13,8 +13,8 @@ using namespace std;
 
 int main()
 {
-    PartTimeEmployee emp1;
-
+//    PartTimeEmployee emp1;
+// git check
 
     return 0;
 }
