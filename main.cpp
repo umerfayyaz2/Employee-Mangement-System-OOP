@@ -13,11 +13,11 @@ using namespace std;
 
 int main()
 {
-    PartTimeEmployee pte1;
+    FullTimeEmployee e1;
 
-    pte1.set_partime_employee_details();
+    e1.set_fulltime_employee_data();
 
-    pte1.displayInfo();
+    e1.displayInfo();
 
     return 0;
 }

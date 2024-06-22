@@ -13,7 +13,7 @@ public:
     ~FullTimeEmployee(); // Destructor
 
     // Friend function to set full-time employee data
-    friend void set_fulltime_employee_data(FullTimeEmployee &employee);
+    void set_fulltime_employee_data();
 
     int calculateSalary() const override; // Override calculateSalary
     void displayInfo() override;          // Override displayInfo

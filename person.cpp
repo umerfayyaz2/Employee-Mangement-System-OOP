@@ -1,9 +1,10 @@
-#include "Person.h"
+#include "person.h"
 #include <cstring>
 #include <cstdlib>
 #include "input_validation.h"
 #include <limits>
 #include <cctype>
+#include <ctime>
 
 // Default constructor
 Person::Person() : age(0)
@@ -25,32 +26,36 @@ void toUpper(char *str)
     }
 }
 
-// Friend function to set all data
-void setData(Person &p)
+// Method to set all data
+void Person::setData()
 {
-    p.setName();
+    setName();
     system("Cls");
-    p.setDOB();
+
+    setDOB();
     system("Cls");
-    p.setPhoneNumber();
+
+    setPhoneNumber();
     system("Cls");
-    p.setAddress();
+
+    setAddress();
     system("Cls");
-    p.setAge();
+
+    setAge();
     system("Cls");
 }
 
-// Friend function to print all data
-void printData(Person &p)
+// Method to print all data
+void Person::printData()
 {
-    cout << "Name: " << p.getName() << endl;
-    cout << "Date of Birth: " << p.getDOB().getDay() << "/" << p.getDOB().getMonth() << "/" << p.getDOB().getYear() << endl;
-    cout << "Phone Number: " << p.getPhoneNumber() << endl;
-    cout << "Address: " << p.getAddress() << endl;
-    cout << "Age: " << p.getAge() << endl;
+    cout << "Name: " << getName() << endl;
+    cout << "Date of Birth: " << getDOB().getDay() << "/" << getDOB().getMonth() << "/" << getDOB().getYear() << endl;
+    cout << "Phone Number: " << getPhoneNumber() << endl;
+    cout << "Address: " << getAddress() << endl;
+    cout << "Age: " << getAge() << endl;
 }
 
-// Set methods
+// Setter methods
 void Person::setName()
 {
     while (true)
@@ -69,7 +74,7 @@ void Person::setName()
         {
             cerr << "Error: " << e.what() << " Please enter name in alphabets only." << endl;
             cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Fixed parentheses error
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
     }
     toUpper(name);
@@ -83,7 +88,6 @@ void Person::setDOB()
     dob.setYear();
 }
 
-// Function to set the phone number with validation
 void Person::setPhoneNumber()
 {
     while (true)
@@ -107,7 +111,6 @@ void Person::setPhoneNumber()
     }
 }
 
-// Function to set the address with validation
 void Person::setAddress()
 {
     while (true)
@@ -117,8 +120,7 @@ void Person::setAddress()
             cout << "Enter address: ";
             cin.getline(address, 100);
 
-            // Assuming we need a simple validation for address
-            // For this example, let's just check if the address is not empty
+            // Validate the input address
             if (strlen(address) == 0)
             {
                 throw invalid_argument("Address cannot be empty.");
@@ -138,11 +140,22 @@ void Person::setAddress()
 
 void Person::setAge()
 {
-    int currentYear = 2024;
+    // Calculate age based on current date and DOB
+    time_t now = time(0);
+    tm *currentTime = localtime(&now);
+    int currentYear = 1900 + currentTime->tm_year;
+
     age = currentYear - dob.getYear();
+
+    // Adjust age if birthday hasn't occurred this year yet
+    if (currentTime->tm_mon + 1 < dob.getMonth() ||
+        (currentTime->tm_mon + 1 == dob.getMonth() && currentTime->tm_mday < dob.getDay()))
+    {
+        age--;
+    }
 }
 
-// Get methods
+// Getter methods
 const char *Person::getName()
 {
     return name;
@@ -179,7 +192,6 @@ void Person::string_validation(const char *str)
     }
 }
 
-// Function to validate that the phone number contains only digits
 void Person::phone_validation(const char *str)
 {
     for (int i = 0; str[i] != '\0'; ++i)
