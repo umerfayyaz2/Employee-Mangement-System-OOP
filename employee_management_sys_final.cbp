@@ -36,6 +36,8 @@
 		<Unit filename="Employee.h" />
 		<Unit filename="FullTimeEmployee.cpp" />
 		<Unit filename="FullTimeEmployee.h" />
+		<Unit filename="PartTimeEmployee.cpp" />
+		<Unit filename="PartTimeEmployee.h" />
 		<Unit filename="dateType.cpp" />
 		<Unit filename="dateType.h" />
 		<Unit filename="input_validation.cpp" />

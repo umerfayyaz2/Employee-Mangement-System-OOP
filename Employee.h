@@ -14,7 +14,7 @@ public:
     Employee(); // Default constructor
     virtual ~Employee(); // Virtual destructor
 
-    virtual int calculateSalary() ; // Pure virtual function, changed to int
+    virtual int calculateSalary(); // Pure virtual function, changed to int
     virtual void displayInfo(); // Virtual function
 
     int getId() const;
