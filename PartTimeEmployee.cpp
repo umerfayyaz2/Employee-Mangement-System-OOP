@@ -1,6 +1,8 @@
 #include "PartTimeEmployee.h"
 #include <iostream>
 #include <stdexcept>
+#include "input_validation.h"
+#include <limits>
 
 using namespace std;
 
@@ -20,22 +22,89 @@ void PartTimeEmployee::displayInfo()
     cout << "Hours Worked: " << hoursWorked << endl;
 }
 
-void PartTimeEmployee::setHourlyRate(double rate)
+void PartTimeEmployee::setHourlyRate()
 {
-    if (rate < 0)
+    double rate;
+
+    while (true)
     {
-        throw invalid_argument("Hourly rate cannot be negative.");
+        try
+        {
+            cout << "Enter the Hourly Rate Here (max range 80 $): ";
+            double_validation(rate);
+
+            // Validate the input to ensure it's a double
+            if (cin.fail())
+            {
+                throw invalid_argument("Input is not a valid number.");
+            }
+
+            // Validate the rate value
+            if (rate < 0 || rate > 80)
+            {
+                throw invalid_argument("Enter Hourly Rate in a valid range (0 to 80 $): ");
+            }
+
+            // If the input is valid, break out of the loop
+            break;
+        }
+        catch (const invalid_argument &e)
+        {
+            cerr << "Error: " << e.what() << " Please enter a valid hourly rate." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
     }
+
     hourlyRate = rate;
 }
 
-void PartTimeEmployee::setHoursWorked(int hours)
+void PartTimeEmployee::setHoursWorked()
 {
-    if (hours < 0)
+    int hours;
+
+    while (true)
     {
-        throw invalid_argument("Hours worked cannot be negative.");
+        try
+        {
+            cout << "Enter the Hours Worked (max 160 hours): ";
+            int_validation(hours);
+
+            // Validate the input to ensure it's an integer
+            if (cin.fail())
+            {
+                throw invalid_argument("Input is not a valid integer.");
+            }
+
+            // Validate the hours worked value
+            if (hours < 0 || hours > 160)
+            {
+                throw invalid_argument("Enter Hours Worked in a valid range (0 to 160): ");
+            }
+
+            // If the input is valid, break out of the loop
+            break;
+        }
+        catch (const invalid_argument &e)
+        {
+            cerr << "Error: " << e.what() << " Please enter a valid number of hours worked." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
     }
+
     hoursWorked = hours;
+}
+
+void PartTimeEmployee::set_partime_employee_details()
+{
+    cout << "Setting Part-Time Employee Details: " << endl;
+    setName();
+    setDOB();
+    setPhoneNumber();
+    setAddress();
+    setHourlyRate();
+    setHoursWorked();
 }
 
 double PartTimeEmployee::getHourlyRate() const

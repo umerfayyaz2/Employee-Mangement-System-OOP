@@ -3,6 +3,7 @@
 
 #include "Employee.h"
 
+// NEED TO SET A METHOD TO GET SALARY DETAILS WITH RESPECT TO HOURS WORKED AND HOURLY RATE
 class PartTimeEmployee : public Employee
 {
 private:
@@ -17,8 +18,9 @@ public:
     void displayInfo() override;          // Override displayInfo
 
     // Setter methods
-    void setHourlyRate(double rate);
-    void setHoursWorked(int hours);
+    void setHourlyRate();
+    void setHoursWorked();
+    void set_partime_employee_details();
 
     // Getter methods
     double getHourlyRate() const;
