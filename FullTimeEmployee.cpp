@@ -50,7 +50,7 @@ void FullTimeEmployee::setMonthlySalary()
             // Validate the salary value
             if (salary < 0 || salary > 60000)
             {
-                throw invalid_argument("Enter Monthly Salary in a valid range ( max range 60k $): ");
+                throw invalid_argument("Enter Monthly Salary in a valid range ( max range 60k $ ): ");
             }
 
             // If the input is valid, break out of the loop

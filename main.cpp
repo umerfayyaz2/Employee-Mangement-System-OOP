@@ -8,18 +8,22 @@
 #include "Employee.h"
 #include "FullTimeEmployee.h"
 #include "PartTimeEmployee.h"
+#include "JobRole.h"
 
 using namespace std;
 
 int main()
 {
-    FullTimeEmployee e1;
+        JobRole e;
 
-    e1.set_fulltime_employee_data();
+        e.getRoleName();
+        e.setBaseSalary();
 
-    e1.displayInfo();
+        cout << "Employee's Job Role : " << e.getRoleName() << endl;
 
-    return 0;
+        cout << "Employee's Base Salary: " << e.getBaseSalary();
+
+        return 0;
 }
 
-// g++ main.cpp person.cpp dateType.cpp Employee.cpp FullTimeEmployee.cpp input_validation.cpp PartTimeEmployee.cpp
+// g++ main.cpp person.cpp dateType.cpp Employee.cpp FullTimeEmployee.cpp input_validation.cpp PartTimeEmployee.cpp JobRole.cpp
