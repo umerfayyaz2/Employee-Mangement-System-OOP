@@ -1,91 +1,101 @@
 #include "FullTimeEmployee.h"
 #include "input_validation.h"
 #include <iostream>
+#include <stdexcept>
 #include <limits>
 
-// Default constructor
+using namespace std;
+
 FullTimeEmployee::FullTimeEmployee() : Employee(), monthlySalary(0) {}
 
-// Destructor
 FullTimeEmployee::~FullTimeEmployee() {}
 
-// Override calculateSalary
-int FullTimeEmployee::calculateSalary() const {
+void set_fulltime_employee_data(FullTimeEmployee &employee)
+{
+    employee.setName();
+    employee.setDOB();
+    employee.setPhoneNumber();
+    employee.setAddress();
+    employee.setAge();
+    employee.setMonthlySalary();
+}
+
+int FullTimeEmployee::calculateSalary() const
+{ // Corrected: Removed override here
     return monthlySalary;
 }
 
-// Override displayInfo
-void FullTimeEmployee::displayInfo() {
+void FullTimeEmployee::displayInfo()
+{
     Employee::displayInfo();
-    cout << "Monthly Salary: " << monthlySalary << endl;
+    cout << "Monthly Salary: " << monthlySalary << " $" << endl;
 }
 
-// Getter for monthlySalary
-int FullTimeEmployee::getMonthlySalary() const {
+// void FullTimeEmployee::setMonthlySalary()
+// {   int salary;
+//     while (while)
+//     {
+//         try
+//         {
+//             cout << "Enter The Salary Here: ";
+
+//             int_validation(salary);
+
+//             break;
+//         }
+//         catch (invalid_argument &e)
+//         {
+//             cerr << "Error" << e.what() << "Please enter a valid salary";
+//             cin.clear();
+//             cin.ignore(numeric_limits<streamsize>::max(), '\n');
+//         }
+//     }
+
+//     if (monthlySalary < 0 )
+//     {
+//         throw invalid_argument("Monthly salary cannot be negative.");
+//     }
+//     monthlySalary = salary;
+// }
+
+void FullTimeEmployee::setMonthlySalary()
+{
+    int salary;
+
+    while (true)
+    {
+        try
+        {
+            cout << "Enter the Salary Here ( max range 60k $) : ";
+            int_validation(salary);
+
+            // Validate the input to ensure it's an integer
+            if (cin.fail())
+            {
+                throw invalid_argument("Input is not a valid integer.");
+            }
+
+            // Validate the salary value
+            if (salary < 0 || salary > 60000)
+            {
+                throw invalid_argument("Enter Monthly Salary in a valid range ( max range 60k $): ");
+            }
+
+            // If the input is valid, break out of the loop
+            break;
+        }
+        catch (const invalid_argument &e)
+        {
+            cerr << "Error: " << e.what() << " Please enter a valid salary in terms of number: " << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+    }
+
+    monthlySalary = salary;
+}
+
+int FullTimeEmployee::getMonthlySalary() const
+{
     return monthlySalary;
-}
-
-// Setter for monthlySalary
-void FullTimeEmployee::setMonthlySalary() {
-    while (true) {
-        try {
-            cout << "Enter Monthly Salary: ";
-            int tempSalary;
-            cin >> tempSalary;
-
-            // Check if input is a valid integer and not a failure state
-            if (cin.fail()) {
-                throw invalid_argument("Invalid salary input.");
-            }
-
-            // Assuming int_validation checks if the integer is within an acceptable range
-            int_validation(tempSalary);
-
-            monthlySalary = tempSalary;
-            break;
-        } catch (const invalid_argument& e) {
-            cerr << "Error: " << e.what() << ". Please enter a valid integer." << endl;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
-    }
-}
-
-// Set data for FullTimeEmployee
-void FullTimeEmployee::setData() {
-    setName();
-    system("Cls");
-    setDOB();
-    system("Cls");
-    setPhoneNumber();
-    system("Cls");
-    setAddress();
-    system("Cls");
-    setAge();
-    system("Cls");
-
-    while (true) {
-        try {
-            cout << "Enter monthly salary: ";
-            cin >> monthlySalary;
-            if (cin.fail()) {
-                throw invalid_argument("Invalid salary input.");
-            }
-            break;
-        } catch (const invalid_argument& e) {
-            cerr << "Error: " << e.what() << " Please enter a valid salary." << endl;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
-    }
-}
-
-// Print data for FullTimeEmployee
-void FullTimeEmployee::printData() {
-    cout << "Name: " << getName() << endl;
-    cout << "Date of Birth: " << dob.getDay() << "/" << dob.getMonth() << "/" << dob.getYear() << endl;
-    cout << "Phone Number: " << getPhoneNumber() << endl;
-    cout << "Address: " << getAddress() << endl;
-    cout << "Age: " << getAge() << endl;
-    cout << "Monthly Salary: " << monthlySalary << endl;
 }

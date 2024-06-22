@@ -1,28 +1,28 @@
-#ifndef FULLTIMEEMPLOYEE_H_INCLUDED
-#define FULLTIMEEMPLOYEE_H_INCLUDED
+#ifndef FULLTIMEEMPLOYEE_H
+#define FULLTIMEEMPLOYEE_H
 
 #include "Employee.h"
 
-class FullTimeEmployee : public Employee {
+class FullTimeEmployee : public Employee
+{
 private:
     int monthlySalary;
 
 public:
-    // Constructor and Destructor
-    FullTimeEmployee();
-    ~FullTimeEmployee();
+    FullTimeEmployee();  // Default constructor
+    ~FullTimeEmployee(); // Destructor
 
-    // Override calculateSalary and displayInfo
-    int calculateSalary() const override;
-    void displayInfo() override;
+    // Friend function to set full-time employee data
+    friend void set_fulltime_employee_data(FullTimeEmployee &employee);
 
-    // Getter and Setter for monthlySalary
-    int getMonthlySalary() const;
+    int calculateSalary() const override; // Override calculateSalary
+    void displayInfo() override;          // Override displayInfo
+
+    // Setter methods
     void setMonthlySalary();
 
-    // Member functions to set and print data
-    void setData();
-    void printData();
+    // Getter methods
+    int getMonthlySalary() const;
 };
 
-#endif // FULLTIMEEMPLOYEE_H_INCLUDED
+#endif // FULLTIMEEMPLOYEE_H

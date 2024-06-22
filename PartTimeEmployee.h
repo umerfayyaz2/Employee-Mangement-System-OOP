@@ -3,21 +3,24 @@
 
 #include "Employee.h"
 
-class PartTimeEmployee : public Employee {
+class PartTimeEmployee : public Employee
+{
 private:
     double hourlyRate;
     int hoursWorked;
 
 public:
-    PartTimeEmployee();
+    PartTimeEmployee();  // Default constructor
+    ~PartTimeEmployee(); // Destructor
 
-    ~PartTimeEmployee();
+    int calculateSalary() const override; // Override calculateSalary
+    void displayInfo() override;          // Override displayInfo
 
-    int calculateSalary() override;
-    void displayInfo() override;
+    // Setter methods
+    void setHourlyRate(double rate);
+    void setHoursWorked(int hours);
 
-    void setHourlyRate();
-    void setHoursWorked();
+    // Getter methods
     double getHourlyRate() const;
     int getHoursWorked() const;
 };
