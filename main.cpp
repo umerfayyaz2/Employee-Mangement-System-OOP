@@ -42,7 +42,14 @@ int main()
 
         e.setRoleName();
 
-        cout << e.getRoleName();
+        cout << e.getRoleName() << endl;
+        ;
+
+        Salary s;
+
+        s.setBaseSalary();
+
+        s.displaySalary();
 
         return 0;
 }

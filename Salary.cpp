@@ -1,12 +1,8 @@
 #include "Salary.h"
-
 #include <iostream>
 #include <stdexcept>
 #include <limits>
 #include "input_validation.h"
-
-// #define BASE_SALARY 60000
-// #define BONUS 10000
 
 using namespace std;
 
@@ -34,10 +30,15 @@ void Salary::displaySalary() const
 
 void Salary::setBaseSalary()
 {
+    int attempts = 0;
     while (true)
     {
         try
         {
+            if (attempts >= 3)
+            {
+                throw invalid_argument("Too many invalid attempts. Please try again later.");
+            }
             cout << "Enter Base Salary: ";
             int_validation(baseSalary);
             if (baseSalary < 0 || baseSalary > 60000)
@@ -49,6 +50,7 @@ void Salary::setBaseSalary()
             cerr << "Error: " << e.what() << " Please enter a valid base salary in terms of number." << endl;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            attempts++;
         }
     }
 
@@ -57,14 +59,19 @@ void Salary::setBaseSalary()
 
 void Salary::setBonus()
 {
+    int attempts = 0;
     while (true)
     {
         try
         {
+            if (attempts >= 3)
+            {
+                throw invalid_argument("Too many invalid attempts. Please try again later.");
+            }
             cout << "Enter Bonus: ";
             int_validation(bonus);
-            if (bonus <= 0 || bonus > 10000)
-                throw invalid_argument("Bonus range should be between (0-60000)");
+            if (bonus < 0 || bonus > 10000)
+                throw invalid_argument("Bonus range should be between (0-10000)");
             break;
         }
         catch (invalid_argument &e)
@@ -72,6 +79,7 @@ void Salary::setBonus()
             cerr << "Error: " << e.what() << " Please enter a valid bonus in terms of number." << endl;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            attempts++;
         }
     }
 
@@ -80,10 +88,15 @@ void Salary::setBonus()
 
 void Salary::setDeduction()
 {
+    int attempts = 0;
     while (true)
     {
         try
         {
+            if (attempts >= 3)
+            {
+                throw invalid_argument("Too many invalid attempts. Please try again later.");
+            }
             cout << "Enter Deduction: ";
             int_validation(deduction);
             if (deduction < 0 || deduction > 60000)
@@ -95,7 +108,7 @@ void Salary::setDeduction()
             cerr << "Error: " << e.what() << " Please enter a valid deduction in terms of number." << endl;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            // cin.ignore(1000, '\n');
+            attempts++;
         }
     }
 
