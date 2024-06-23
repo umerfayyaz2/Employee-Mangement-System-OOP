@@ -1,6 +1,7 @@
 #include "iostream"
 #include "JobRole.h"
 #include "limits"
+#include "input_validation.h"
 #include <cctype>
 
 using namespace std;
@@ -25,8 +26,8 @@ void JobRole::toUpper(char *str)
 // Function to validate that the role name contains only alphabets
 void JobRole::string_validation(const char *str)
 {
-    if (strcmp(str, "\n"))
-        throw invalid_argument("Name contains non-alphabetic characters.");
+    // if (strcmp(str, "\n"))
+    //     throw invalid_argument("Name contains non-alphabetic characters.");
 
     for (int i = 0; str[i] != '\0'; ++i)
     {
@@ -55,6 +56,12 @@ void JobRole::setRoleName()
         {
             cout << "Enter role name: ";
             cin.getline(roleName, 50);
+
+            // Validate the input address
+            if (strlen(roleName) == 0)
+            {
+                throw invalid_argument("Role name cannot be empty.");
+            }
 
             // Validate the input role name
             string_validation(roleName);

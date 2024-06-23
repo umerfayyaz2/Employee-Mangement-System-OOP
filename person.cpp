@@ -65,6 +65,12 @@ void Person::setName()
             cout << "Enter name: ";
             cin.getline(name, 50);
 
+            // Validate the input address
+            if (strlen(name) == 0)
+            {
+                throw invalid_argument("Name cannot be empty.");
+            }
+
             // Validate the input name
             string_validation(name);
 
@@ -96,6 +102,12 @@ void Person::setPhoneNumber()
         {
             cout << "Enter phone number: ";
             cin.getline(phoneNumber, 20);
+
+            // Validate the input address
+            if (strlen(phoneNumber) == 0)
+            {
+                throw invalid_argument("Phone number cannot be empty.");
+            }
 
             // Validate the input phone number
             phone_validation(phoneNumber);
@@ -183,8 +195,14 @@ int Person::getAge()
 
 void Person::string_validation(const char *str)
 {
-    if(strcmp(str, "\n"))
-        throw invalid_argument("Name contains non-alphabetic characters.");
+    // if (strcmp(str, "\n"))
+    //     throw invalid_argument("Name contains non-alphabetic characters.");
+
+    // Validate the input address
+    // if (strlen(str == 0))
+    // {
+    //     throw invalid_argument("Field cannot be empty.");
+    // }
 
     for (int i = 0; str[i] != '\0'; ++i)
     {

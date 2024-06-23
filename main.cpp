@@ -1,15 +1,15 @@
-// #include <iostream>
-// #include <limits>
-// #include <string>
-// #include <cstring>
-// #include "input_validation.h"
-// #include "person.h"
-// #include "dateType.h"
-// #include "Employee.h"
-// #include "FullTimeEmployee.h"
-// #include "PartTimeEmployee.h"
-// #include "JobRole.h"
-// #include "Salary.h"
+#include <iostream>
+#include <limits>
+#include <string>
+#include <cstring>
+#include "input_validation.h"
+#include "person.h"
+#include "dateType.h"
+#include "Employee.h"
+#include "FullTimeEmployee.h"
+#include "PartTimeEmployee.h"
+#include "JobRole.h"
+#include "Salary.h"
 #include "EmployeeManager.h"
 
 using namespace std;
@@ -38,7 +38,11 @@ int main()
 
         // s.displaySalary();
 
-        EmployeeManager em;
+        JobRole e;
+
+        e.setRoleName();
+
+        cout << e.getRoleName();
 
         return 0;
 }

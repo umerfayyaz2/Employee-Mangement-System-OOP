@@ -1,5 +1,6 @@
 #include "input_validation.h"
 #include <limits> // For numeric_limits
+#include <cstring>
 
 // Function to clear the input buffer
 void clear_input_buffer()
@@ -21,7 +22,7 @@ void int_validation(int &number)
 }
 
 // Function to validate string input
-void string_validation(const string &input)
+void name_validation(const string &input)
 {
     for (char c : input)
     {
@@ -33,7 +34,8 @@ void string_validation(const string &input)
 }
 
 // -> this is to be updated.
-// void char_array_validation(const char *input){
+// void char_array_validation(const char *str)
+// {
 //     if (strcmp(str, "\n"))
 //         throw invalid_argument("Name contains non-alphabetic characters.");
 

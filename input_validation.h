@@ -9,7 +9,8 @@ using namespace std;
 
 void clear_input_buffer();
 void int_validation(int &number);
-void string_validation(const string &input);
+void name_validation(const string &input);
+// void char_array_validation(const char *input);
 void char_validation(char &character);
 void double_validation(double &number);
 void validate_phone_number(string &phoneNumber);
