@@ -38,20 +38,20 @@ int main()
 
         // s.displaySalary();
 
-        JobRole e;
+        // JobRole e;
 
-        e.setRoleName();
+        // e.setRoleName();
 
-        cout << e.getRoleName() << endl;
-        ;
+        // cout << e.getRoleName() << endl;
+        // ;
 
-        Salary s;
+        // Salary s;
 
-        s.setBaseSalary();
+        // s.setBaseSalary();
 
-        s.displaySalary();
+        // s.displaySalary();
 
-        return 0;
+                return 0;
 }
 
 // g++ main.cpp person.cpp dateType.cpp Employee.cpp FullTimeEmployee.cpp input_validation.cpp PartTimeEmployee.cpp JobRole.cpp Salary.cpp
