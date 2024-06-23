@@ -183,6 +183,9 @@ int Person::getAge()
 
 void Person::string_validation(const char *str)
 {
+    if(strcmp(str, "\n"))
+        throw invalid_argument("Name contains non-alphabetic characters.");
+
     for (int i = 0; str[i] != '\0'; ++i)
     {
         if (isdigit(str[i]))

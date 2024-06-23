@@ -17,6 +17,7 @@ void FullTimeEmployee::set_fulltime_employee_data()
     this->setPhoneNumber();
     this->setAddress();
     this->setMonthlySalary();
+    this->setAge();
 }
 
 int FullTimeEmployee::calculateSalary() const

@@ -20,6 +20,7 @@ void PartTimeEmployee::displayInfo()
     Employee::displayInfo();
     cout << "Hourly Rate: " << hourlyRate << endl;
     cout << "Hours Worked: " << hoursWorked << endl;
+    cout << "Salary: " << calculateSalary() << " $" << endl;
 }
 
 void PartTimeEmployee::setHourlyRate()
@@ -99,12 +100,13 @@ void PartTimeEmployee::setHoursWorked()
 void PartTimeEmployee::set_partime_employee_details()
 {
     cout << "Setting Part-Time Employee Details: " << endl;
-    setName();
-    setDOB();
-    setPhoneNumber();
-    setAddress();
-    setHourlyRate();
-    setHoursWorked();
+    this->setName();
+    this->setDOB();
+    this->setPhoneNumber();
+    this->setAddress();
+    this->setHourlyRate();
+    this->setHoursWorked();
+    this->setAge();
 }
 
 double PartTimeEmployee::getHourlyRate() const

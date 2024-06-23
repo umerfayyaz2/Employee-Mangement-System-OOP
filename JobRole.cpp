@@ -25,6 +25,9 @@ void JobRole::toUpper(char *str)
 // Function to validate that the role name contains only alphabets
 void JobRole::string_validation(const char *str)
 {
+    if (strcmp(str, "\n"))
+        throw invalid_argument("Name contains non-alphabetic characters.");
+
     for (int i = 0; str[i] != '\0'; ++i)
     {
         if (isdigit(str[i]))
@@ -82,10 +85,10 @@ void JobRole::setBaseSalary()
             int_validation(salary);
 
             // Validate the input to ensure it's an integer
-            if (cin.fail())
-            {
-                throw invalid_argument("Input is not a valid integer.");
-            }
+            // if (cin.fail())
+            // {
+            //     throw invalid_argument("Input is not a valid integer.");
+            // }
 
             // Validate the base salary value
             if (salary < 0)
