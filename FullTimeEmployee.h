@@ -25,4 +25,6 @@ public:
     int getMonthlySalary() const;
 };
 
+#include "FullTimeEmployee.cpp"
+
 #endif // FULLTIMEEMPLOYEE_H

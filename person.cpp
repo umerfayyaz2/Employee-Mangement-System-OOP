@@ -1,30 +1,19 @@
 #include "person.h"
-#include <cstring>
-#include <cstdlib>
 #include "input_validation.h"
-#include <limits>
-#include <cctype>
+
 #include <ctime>
+#include <cstring>
+
+#include <iostream>
+using namespace std;
 
 // Default constructor
-Person::Person() : age(0)
+Person::Person() : name(""), age(0), phoneNumber(""), address("")
 {
-    strcpy(name, "");
-    strcpy(phoneNumber, "");
-    strcpy(address, "");
 }
 
 // Destructor
 Person::~Person() {}
-
-// Function to convert a string to uppercase
-void toUpper(char *str)
-{
-    for (int i = 0; str[i] != '\0'; ++i)
-    {
-        str[i] = std::toupper(static_cast<unsigned char>(str[i]));
-    }
-}
 
 // Method to set all data
 void Person::setData()
@@ -58,95 +47,24 @@ void Person::printData()
 // Setter methods
 void Person::setName()
 {
-    while (true)
-    {
-        try
-        {
-            cout << "Enter name: ";
-            cin.getline(name, 50);
-
-            // Validate the input address
-            if (strlen(name) == 0)
-            {
-                throw invalid_argument("Name cannot be empty.");
-            }
-
-            // Validate the input name
-            string_validation(name);
-
-            break;
-        }
-        catch (const invalid_argument &e)
-        {
-            cerr << "Error: " << e.what() << " Please enter name in alphabets only." << endl;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
-    }
+    validate_input_char_array(name, 50, "Enter name: ");
     toUpper(name);
 }
 
 void Person::setDOB()
 {
     cout << "<--------- Setting Date Of Birth Details --------->" << endl;
-    dob.setDay();
-    dob.setMonth();
-    dob.setYear();
+    dob.setDate();
 }
 
 void Person::setPhoneNumber()
 {
-    while (true)
-    {
-        try
-        {
-            cout << "Enter phone number: ";
-            cin.getline(phoneNumber, 20);
-
-            // Validate the input address
-            if (strlen(phoneNumber) == 0)
-            {
-                throw invalid_argument("Phone number cannot be empty.");
-            }
-
-            // Validate the input phone number
-            phone_validation(phoneNumber);
-
-            break;
-        }
-        catch (const invalid_argument &e)
-        {
-            cerr << "Error: " << e.what() << " Please enter a valid phone number." << endl;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
-    }
+    validate_input_phone_number(phoneNumber, "Enter phone number: ");
 }
 
 void Person::setAddress()
 {
-    while (true)
-    {
-        try
-        {
-            cout << "Enter address: ";
-            cin.getline(address, 100);
-
-            // Validate the input address
-            if (strlen(address) == 0)
-            {
-                throw invalid_argument("Address cannot be empty.");
-            }
-
-            break;
-        }
-        catch (const invalid_argument &e)
-        {
-            cerr << "Error: " << e.what() << " Please enter a valid address." << endl;
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
-    }
+    validate_input_char_array_with_numbers(address, 100, "Enter address: ");
     toUpper(address);
 }
 
@@ -191,35 +109,4 @@ const char *Person::getAddress()
 int Person::getAge()
 {
     return age;
-}
-
-void Person::string_validation(const char *str)
-{
-    // if (strcmp(str, "\n"))
-    //     throw invalid_argument("Name contains non-alphabetic characters.");
-
-    // Validate the input address
-    // if (strlen(str == 0))
-    // {
-    //     throw invalid_argument("Field cannot be empty.");
-    // }
-
-    for (int i = 0; str[i] != '\0'; ++i)
-    {
-        if (isdigit(str[i]))
-        {
-            throw invalid_argument("Name contains non-alphabetic characters.");
-        }
-    }
-}
-
-void Person::phone_validation(const char *str)
-{
-    for (int i = 0; str[i] != '\0'; ++i)
-    {
-        if (isalpha(str[i]))
-        {
-            throw invalid_argument("Phone number contains non-numeric characters.");
-        }
-    }
 }

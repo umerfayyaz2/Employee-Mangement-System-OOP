@@ -1,10 +1,7 @@
 #ifndef EMPLOYEE_H_INCLUDED
 #define EMPLOYEE_H_INCLUDED
 
-#include <iostream>
 #include "person.h"
-
-using namespace std;
 
 class Employee : public Person
 {
@@ -22,5 +19,7 @@ public:
 
     static int getNextId();
 };
+
+#include "Employee.cpp"
 
 #endif // EMPLOYEE_H_INCLUDED

@@ -1,5 +1,9 @@
 #include "Employee.h"
 
+#include <iostream>
+
+using namespace std;
+
 int Employee::id = 1000;
 
 int Employee::getNextId()

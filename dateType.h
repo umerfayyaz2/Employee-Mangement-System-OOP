@@ -13,14 +13,14 @@ protected:
 
 public:
     dateType();
-    //    dateType(int dd , int mm , int yyyy);
     virtual ~dateType();
 
     bool check_leap_year() const;
 
-    void setDay();
-    void setMonth();
-    void setYear();
+    // void setDay();
+    // void setMonth();
+    // void setYear();
+    void setDate(); // changes in Person.h are required
 
     int getDay() const;
     int getMonth() const;
@@ -28,5 +28,7 @@ public:
 
     virtual void printDate();
 };
+
+#include "dateType.cpp"
 
 #endif // DATETYPE_H_INCLUDED

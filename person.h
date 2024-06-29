@@ -1,10 +1,7 @@
 #ifndef PERSON_H_INCLUDED
 #define PERSON_H_INCLUDED
 
-#include <iostream>
 #include "dateType.h"
-
-using namespace std;
 
 class Person
 {
@@ -18,8 +15,6 @@ protected:
 public:
     Person();
     virtual ~Person();
-    void string_validation(const char *str);
-    void phone_validation(const char *str); // Placeholder for phone number validation
 
     // Methods to set and print data
     void setData();
@@ -39,5 +34,7 @@ public:
     const char *getAddress();
     int getAge(); // Function to get age
 };
+
+#include "person.cpp"
 
 #endif // PERSON_H_INCLUDED

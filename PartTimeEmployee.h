@@ -27,4 +27,6 @@ public:
     int getHoursWorked() const;
 };
 
+#include "PartTimeEmployee.cpp"
+
 #endif // PARTTIMEEMPLOYEE_H
