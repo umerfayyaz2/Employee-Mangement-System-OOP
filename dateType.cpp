@@ -16,6 +16,41 @@ dateType::dateType() : day(1), month(1), year(2000) {}
 // Destructor
 dateType::~dateType() {}
 
+// Get the day
+int dateType::getDay() const
+{
+    return day;
+}
+
+// Get the month
+int dateType::getMonth() const
+{
+    return month;
+}
+
+// Get the year
+int dateType::getYear() const
+{
+    return year;
+}
+
+void dateType::printDate()
+{
+    cout << day << " / " << month << " / " << year;
+}
+
+// Method To Check Leap Year :)
+bool dateType::check_leap_year() const
+{
+    if (year % 400 == 0)
+        return true;
+
+    if (year % 100 == 0) // LEAP YEAR CALCULATION FORMULA APPLIED HERE
+        return false;
+
+    return year % 4 == 0;
+};
+
 // Set the day with validation
 
 void dateType::setDay()
@@ -117,27 +152,4 @@ void dateType::setYear()
         }
     }
     year = y;
-}
-
-// Get the day
-int dateType::getDay()
-{
-    return day;
-}
-
-// Get the month
-int dateType::getMonth()
-{
-    return month;
-}
-
-// Get the year
-int dateType::getYear()
-{
-    return year;
-}
-
-void dateType::printDate()
-{
-    cout << day << " / " << month << " / " << year;
 }

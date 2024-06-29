@@ -1,7 +1,7 @@
 #include <iostream>
-#include <limits>
-#include <string>
-#include <cstring>
+// #include <limits>
+// #include <string>
+// #include <cstring>
 #include "input_validation.h"
 #include "person.h"
 #include "dateType.h"
@@ -20,38 +20,12 @@ using namespace std;
 
 int main()
 {
-        // JobRole e;
-        // FullTimeEmployee e;
-        // PartTimeEmployee e;
-        // Salary s;
+        FullTimeEmployee e1;
 
-        // e.setRoleName();
-        // e.setBaseSalary();
+        e1.set_fulltime_employee_data();
+        e1.printData();
 
-        // cout << "Employee's Job Role : " << e.getRoleName() << endl;
-
-        // cout << "Employee's Base Salary: " << e.getBaseSalary();
-
-        // e.set_partime_employee_details();
-
-        // e.displayInfo();
-
-        // s.displaySalary();
-
-        // JobRole e;
-
-        // e.setRoleName();
-
-        // cout << e.getRoleName() << endl;
-        // ;
-
-        // Salary s;
-
-        // s.setBaseSalary();
-
-        // s.displaySalary();
-
-                return 0;
+        return 0;
 }
 
 // g++ main.cpp person.cpp dateType.cpp Employee.cpp FullTimeEmployee.cpp input_validation.cpp PartTimeEmployee.cpp JobRole.cpp Salary.cpp

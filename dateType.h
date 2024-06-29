@@ -13,18 +13,18 @@ protected:
 
 public:
     dateType();
-//    dateType(int dd , int mm , int yyyy);
+    //    dateType(int dd , int mm , int yyyy);
     virtual ~dateType();
 
-
+    bool check_leap_year() const;
 
     void setDay();
     void setMonth();
     void setYear();
 
-    int getDay();
-    int getMonth();
-    int getYear();
+    int getDay() const;
+    int getMonth() const;
+    int getYear() const;
 
     virtual void printDate();
 };
