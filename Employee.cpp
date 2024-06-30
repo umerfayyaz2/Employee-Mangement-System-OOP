@@ -4,11 +4,11 @@
 
 using namespace std;
 
-int Employee::id = 1000;
+int Employee::count = 1000;
 
 int Employee::getNextId()
 {
-    return ++id;
+    return ++count;
 }
 
 Employee::Employee() : Person()
@@ -25,10 +25,23 @@ int Employee::getId() const
 
 void Employee::displayInfo()
 {
-    cout << "Name: " << getName() << endl;
+    cout << "Name: " << name << endl;
     cout << "ID: " << id << endl;
+    cout << "Job Role: " << jobRole << endl;
     cout << "Date of Birth: " << dob.getDay() << "/" << dob.getMonth() << "/" << dob.getYear() << endl;
-    cout << "Phone Number: " << getPhoneNumber() << endl;
-    cout << "Address: " << getAddress() << endl;
-    cout << "Age: " << getAge() << endl;
+    cout << "Phone Number: " << phoneNumber << endl;
+    cout << "Address: " << address << endl;
+    cout << "Age: " << age << endl;
+}
+
+const char *Employee::getJobRole()
+{
+    return jobRole;
+}
+
+void Employee::setJobRole()
+{
+    validate_input_char_array(jobRole, 50, "Enter role name: ");
+
+    toUpper(jobRole);
 }

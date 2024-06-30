@@ -4,9 +4,14 @@
 #include <iostream>
 using namespace std;
 
-PartTimeEmployee::PartTimeEmployee() : Employee(), hourlyRate(0), hoursWorked(0) {}
+PartTimeEmployee::PartTimeEmployee()
+{
+    set_partime_employee_details();
+}
 
-PartTimeEmployee::~PartTimeEmployee() {}
+PartTimeEmployee::~PartTimeEmployee()
+{
+}
 
 int PartTimeEmployee::calculateSalary() const
 {

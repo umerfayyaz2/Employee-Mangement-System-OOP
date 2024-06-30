@@ -6,7 +6,9 @@
 class Employee : public Person
 {
 protected:
-    static int id;
+    int id;
+    static int count;
+    char jobRole[30];
 
 public:
     Employee();          // Default constructor
@@ -14,6 +16,9 @@ public:
 
     virtual int calculateSalary() const = 0; // Pure virtual function
     virtual void displayInfo();              // Virtual function
+
+    const char *getJobRole();
+    void setJobRole();
 
     int getId() const;
 

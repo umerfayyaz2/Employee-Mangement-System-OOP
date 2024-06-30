@@ -4,9 +4,14 @@
 #include <iostream>
 using namespace std;
 
-FullTimeEmployee::FullTimeEmployee() : Employee(), monthlySalary(0) {}
+FullTimeEmployee::FullTimeEmployee()
+{
+    set_fulltime_employee_data();
+}
 
-FullTimeEmployee::~FullTimeEmployee() {}
+FullTimeEmployee::~FullTimeEmployee()
+{
+}
 
 void FullTimeEmployee::set_fulltime_employee_data()
 {

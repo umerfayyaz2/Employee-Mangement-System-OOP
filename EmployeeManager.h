@@ -18,9 +18,21 @@ public:
     void updateEmployee();
     void deleteEmployee();
     void viewEmployee();
-    void assignRole();
 
-    void displayEmployees() const;
+    void displayEmployees() ;
+
+    // file handling
+    void saveEmployees();
+
+    void deletePartTimeEmployee();
+    void deleteFullTimeEmployee();
+
+    void loadEmployees();
+
+    void updatePartTimeEmployee();
+    void updateFullTimeEmployee();
 };
+
+#include "EmployeeManager.cpp"
 
 #endif
