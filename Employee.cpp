@@ -1,8 +1,6 @@
 #include "Employee.h"
 
-#include <iostream>
-
-using namespace std;
+#include <fstream>
 
 int Employee::count = 1000;
 
@@ -13,7 +11,17 @@ int Employee::getNextId()
 
 Employee::Employee() : Person()
 {
-    id = getNextId();
+    validate_input_int(id, "Enter employee ID: ", "Invalid ID, please try again...");
+}
+
+Employee::Employee(int value) : Person()
+{
+}
+
+Employee::Employee(const Employee &other) : Person(other), id(other.id) // copy constructor
+{
+    strcpy(jobRole, other.jobRole);
+    // id = getNextId();
 }
 
 Employee::~Employee() {}
@@ -41,6 +49,8 @@ const char *Employee::getJobRole()
 
 void Employee::setJobRole()
 {
+    // cin.clear();
+    clear_input_buffer();
     validate_input_char_array(jobRole, 50, "Enter role name: ");
 
     toUpper(jobRole);

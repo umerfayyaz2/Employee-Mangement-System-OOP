@@ -1,12 +1,13 @@
 #include "FullTimeEmployee.h"
 #include "input_validation.h"
 
-#include <iostream>
-using namespace std;
-
 FullTimeEmployee::FullTimeEmployee()
 {
     set_fulltime_employee_data();
+}
+
+FullTimeEmployee::FullTimeEmployee(const FullTimeEmployee &other) : Employee(other), monthlySalary(other.monthlySalary)
+{
 }
 
 FullTimeEmployee::~FullTimeEmployee()
@@ -19,6 +20,7 @@ void FullTimeEmployee::set_fulltime_employee_data()
     this->setDOB();
     this->setPhoneNumber();
     this->setAddress();
+    this->setJobRole();
     this->setMonthlySalary();
     this->setAge();
 }
@@ -41,7 +43,7 @@ void FullTimeEmployee::setMonthlySalary()
 
         validate_input_int(monthlySalary, "Enter the salary (max 60k $): ", "Invalid salary, please try again...");
 
-        if (monthlySalary > 0 || monthlySalary <= 60000)
+        if (monthlySalary > 0 && monthlySalary <= 60000)
             break;
     }
 }

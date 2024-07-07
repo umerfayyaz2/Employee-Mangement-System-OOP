@@ -1,12 +1,13 @@
 #include "PartTimeEmployee.h"
 #include "input_validation.h"
 
-#include <iostream>
-using namespace std;
-
 PartTimeEmployee::PartTimeEmployee()
 {
     set_partime_employee_details();
+}
+
+PartTimeEmployee::PartTimeEmployee(const PartTimeEmployee &other) : Employee(other), hourlyRate(other.hourlyRate), hoursWorked(other.hoursWorked)
+{
 }
 
 PartTimeEmployee::~PartTimeEmployee()
@@ -32,7 +33,7 @@ void PartTimeEmployee::setHourlyRate()
     {
         validate_input_double(hourlyRate, "Enter hourly rate (max range 80 $): ", "Invalid hourly rate, please try again...");
 
-        if (hourlyRate >= 0 || hourlyRate <= 80)
+        if (hourlyRate >= 0 && hourlyRate <= 80)
             break;
     }
 }
@@ -43,7 +44,7 @@ void PartTimeEmployee::setHoursWorked()
     {
         validate_input_int(hoursWorked, "Enter the hours worked (max 169 hours): ", "Invalid working hours, please try again...");
 
-        if (hoursWorked > 0 || hoursWorked < 160)
+        if (hoursWorked > 0 && hoursWorked < 160)
             break;
     }
 }
@@ -55,6 +56,7 @@ void PartTimeEmployee::set_partime_employee_details()
     this->setDOB();
     this->setPhoneNumber();
     this->setAddress();
+    this->setJobRole();
     this->setHourlyRate();
     this->setHoursWorked();
     this->setAge();

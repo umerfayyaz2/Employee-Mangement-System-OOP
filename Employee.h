@@ -11,7 +11,9 @@ protected:
     char jobRole[30];
 
 public:
-    Employee();          // Default constructor
+    Employee(); // Default constructor
+    Employee(int);
+    Employee(const Employee &other);
     virtual ~Employee(); // Virtual destructor
 
     virtual int calculateSalary() const = 0; // Pure virtual function

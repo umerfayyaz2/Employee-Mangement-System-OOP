@@ -1,17 +1,25 @@
 #ifndef EMPLOYEEMANAGER_H_INCLUDED
 #define EMPLOYEEMANAGER_H_INCLUDED
 
-#include "Employee.h"
-#include <vector>
+#include "FullTimeEmployee.h"
+#include "PartTimeEmployee.h"
 
 class EmployeeManager
 {
 private:
-    vector<Employee *> employees;
+    static int numberOfFullTimeEmployees;
+    static int numberOfPartTimeEmployees;
+    FullTimeEmployee **fullTimeEmployees;
+    PartTimeEmployee **partTimeEmployees;
 
 public:
     EmployeeManager();
     ~EmployeeManager();
+
+    static int getNumberOfFullTimeEmployees();
+    static int getNumberOfPartTimeEmployees();
+
+    void clear();
 
     // crud
     void addEmployee();
@@ -19,7 +27,7 @@ public:
     void deleteEmployee();
     void viewEmployee();
 
-    void displayEmployees() ;
+    void displayEmployees();
 
     // file handling
     void saveEmployees();

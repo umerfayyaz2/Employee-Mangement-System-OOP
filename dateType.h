@@ -15,6 +15,8 @@ public:
     dateType();
     virtual ~dateType();
 
+    dateType &operator=(const dateType &other);
+
     bool check_leap_year() const;
 
     // void setDay();

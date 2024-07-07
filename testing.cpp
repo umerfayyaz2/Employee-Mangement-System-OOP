@@ -14,6 +14,8 @@ int main()
     // manager.viewEmployee();
     // manager.viewEmployee();
 
+    // cout << "Added.\n";
+
     manager.displayEmployees();
 
     return (0);

@@ -11,7 +11,9 @@ private:
     int hoursWorked;
 
 public:
-    PartTimeEmployee();  // Default constructor
+    PartTimeEmployee(); // Default constructor
+    PartTimeEmployee(int) : Employee(1) {}
+    PartTimeEmployee(const PartTimeEmployee &other);
     ~PartTimeEmployee(); // Destructor
 
     int calculateSalary() const override; // Override calculateSalary

@@ -12,6 +12,15 @@ Person::Person() : name(""), age(0), phoneNumber(""), address("")
 {
 }
 
+Person::Person(const Person &other)
+{
+    strcpy(name, other.name);
+    dob = other.dob;
+    strcpy(phoneNumber, other.phoneNumber);
+    strcpy(address, other.address);
+    age = other.age;
+}
+
 // Destructor
 Person::~Person() {}
 

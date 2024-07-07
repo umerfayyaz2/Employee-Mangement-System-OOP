@@ -9,7 +9,9 @@ private:
     int monthlySalary;
 
 public:
-    FullTimeEmployee();  // Default constructor
+    FullTimeEmployee(); // Default constructor
+    FullTimeEmployee(int) : Employee(1) {}
+    FullTimeEmployee(const FullTimeEmployee &other);
     ~FullTimeEmployee(); // Destructor
 
     // Friend function to set full-time employee data

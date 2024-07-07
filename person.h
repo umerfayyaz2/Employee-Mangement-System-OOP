@@ -14,6 +14,7 @@ protected:
 
 public:
     Person();
+    Person(const Person &other) ;
     virtual ~Person();
 
     // Methods to set and print data

@@ -6,6 +6,19 @@ dateType::dateType() : day(1), month(1), year(2000)
     // setDate();
 }
 
+dateType &dateType::operator=(const dateType &other)
+{
+    if (this == &other)
+    {
+        return *this; // Handle self-assignment
+    }
+    this->day = other.day;
+    this->month = other.month;
+    this->year = other.year;
+
+    return *this;
+}
+
 dateType::~dateType() {}
 
 int dateType::getDay() const
