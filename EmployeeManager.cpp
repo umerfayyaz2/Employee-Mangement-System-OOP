@@ -206,7 +206,8 @@ void EmployeeManager::viewEmployee()
             {
                 if (fullTimeEmployees[i]->getId() == empId)
                 {
-                    fullTimeEmployees[i]->displayInfo();
+                    // fullTimeEmployees[i]->displayInfo();
+                    cout << *fullTimeEmployees[i];
                     return;
                 }
             }
@@ -219,7 +220,8 @@ void EmployeeManager::viewEmployee()
             {
                 if (partTimeEmployees[i]->getId() == empId)
                 {
-                    partTimeEmployees[i]->displayInfo();
+                    // partTimeEmployees[i]->displayInfo();
+                    cout << *partTimeEmployees[i];
                     return;
                 }
             }

@@ -60,7 +60,7 @@ void Employee::setId()
     fout.close();
 }
 
-void Employee::displayInfo()
+void Employee::displayInfo() const
 {
     cout << "Name: " << name << endl;
     cout << "ID: " << id << endl;
@@ -84,3 +84,15 @@ void Employee::setJobRole()
 
     toUpper(jobRole);
 }
+
+// ostream &operator<<(ostream &out, const Employee &emp)
+// {
+//     out << "Name: " << name << endl;
+//     out << "ID: " << id << endl;
+//     out << "Job Role: " << jobRole << endl;
+//     out << "Date of Birth: " << dob.getDay() << "/" << dob.getMonth() << "/" << dob.getYear() << endl;
+//     out << "Phone Number: " << phoneNumber << endl;
+//     out << "Address: " << address << endl;
+//     out << "Age: " << age << endl;
+//     return out;
+// }

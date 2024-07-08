@@ -30,7 +30,7 @@ int FullTimeEmployee::calculateSalary() const
     return monthlySalary;
 }
 
-void FullTimeEmployee::displayInfo()
+void FullTimeEmployee::displayInfo() const
 {
     Employee::displayInfo();
     cout << "Monthly Salary: " << monthlySalary << " $" << endl;
@@ -51,4 +51,17 @@ void FullTimeEmployee::setMonthlySalary()
 int FullTimeEmployee::getMonthlySalary() const
 {
     return monthlySalary;
+}
+
+ostream &operator<<(ostream &out, const FullTimeEmployee &ftEmp)
+{
+    out << "Name: " << ftEmp.name << endl;
+    out << "ID: " << ftEmp.id << endl;
+    out << "Job Role: " << ftEmp.jobRole << endl;
+    out << "Date of Birth: " << ftEmp.dob.getDay() << "/" << ftEmp.dob.getMonth() << "/" << ftEmp.dob.getYear() << endl;
+    out << "Phone Number: " << ftEmp.phoneNumber << endl;
+    out << "Address: " << ftEmp.address << endl;
+    out << "Age: " << ftEmp.age << endl;
+    out << "Monthly Salary: " << ftEmp.monthlySalary << " $" << endl;
+    return out;
 }

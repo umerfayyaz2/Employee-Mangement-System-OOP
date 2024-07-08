@@ -17,7 +17,7 @@ public:
     virtual ~Employee(); // Virtual destructor
 
     virtual int calculateSalary() const = 0; // Pure virtual function
-    virtual void displayInfo();              // Virtual function
+     void displayInfo() const override;              // Virtual function
 
     const char *getJobRole();
     void setJobRole();
@@ -26,7 +26,11 @@ public:
     void setId();
 
     static int getNextId();
+
+    // friend ostream &operator<<(ostream &out, const Employee &emp);
 };
+
+// ostream &operator<<(ostream &out, const Employee &emp);
 
 #include "Employee.cpp"
 

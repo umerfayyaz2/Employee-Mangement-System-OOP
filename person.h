@@ -19,7 +19,7 @@ public:
 
     // Methods to set and print data
     void setData();
-    void printData();
+    virtual void displayInfo() const = 0;
 
     // Setter methods
     void setName();

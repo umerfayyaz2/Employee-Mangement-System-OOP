@@ -18,14 +18,18 @@ public:
     void set_fulltime_employee_data();
 
     int calculateSalary() const override; // Override calculateSalary
-    void displayInfo() override;          // Override displayInfo
+    void displayInfo() const;          // Override displayInfo
 
     // Setter methods
     void setMonthlySalary();
 
     // Getter methods
     int getMonthlySalary() const;
+
+    friend ostream &operator<<(ostream &out, const FullTimeEmployee &ftEmp);
 };
+
+ostream &operator<<(ostream &out, const FullTimeEmployee &ftEmp);
 
 #include "FullTimeEmployee.cpp"
 

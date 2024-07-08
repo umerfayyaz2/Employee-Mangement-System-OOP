@@ -43,15 +43,6 @@ void Person::setData()
     system("Cls");
 }
 
-// Method to print all data
-void Person::printData()
-{
-    cout << "Name: " << getName() << endl;
-    cout << "Date of Birth: " << getDOB().getDay() << "/" << getDOB().getMonth() << "/" << getDOB().getYear() << endl;
-    cout << "Phone Number: " << getPhoneNumber() << endl;
-    cout << "Address: " << getAddress() << endl;
-    cout << "Age: " << getAge() << endl;
-}
 
 // Setter methods
 void Person::setName()

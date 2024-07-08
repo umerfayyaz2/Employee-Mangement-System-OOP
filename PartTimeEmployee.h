@@ -17,7 +17,7 @@ public:
     ~PartTimeEmployee(); // Destructor
 
     int calculateSalary() const override; // Override calculateSalary
-    void displayInfo() override;          // Override displayInfo
+    void displayInfo() const;          // Override displayInfo
 
     // Setter methods
     void setHourlyRate();
@@ -27,7 +27,11 @@ public:
     // Getter methods
     double getHourlyRate() const;
     int getHoursWorked() const;
+
+    friend ostream &operator<<(ostream &out, const PartTimeEmployee &ftEmp);
 };
+
+ostream &operator<<(ostream &out, const PartTimeEmployee &ftEmp);
 
 #include "PartTimeEmployee.cpp"
 

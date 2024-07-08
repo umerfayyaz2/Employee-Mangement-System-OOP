@@ -19,7 +19,7 @@ int PartTimeEmployee::calculateSalary() const
     return static_cast<int>(hourlyRate * hoursWorked);
 }
 
-void PartTimeEmployee::displayInfo()
+void PartTimeEmployee::displayInfo() const
 {
     Employee::displayInfo();
     cout << "Hourly Rate: " << hourlyRate << endl;
@@ -70,4 +70,19 @@ double PartTimeEmployee::getHourlyRate() const
 int PartTimeEmployee::getHoursWorked() const
 {
     return hoursWorked;
+}
+
+ostream &operator<<(ostream &out, const PartTimeEmployee &ptEmp)
+{
+    out << "Name: " << ptEmp.name << endl;
+    out << "ID: " << ptEmp.id << endl;
+    out << "Job Role: " << ptEmp.jobRole << endl;
+    out << "Date of Birth: " << ptEmp.dob.getDay() << "/" << ptEmp.dob.getMonth() << "/" << ptEmp.dob.getYear() << endl;
+    out << "Phone Number: " << ptEmp.phoneNumber << endl;
+    out << "Address: " << ptEmp.address << endl;
+    out << "Age: " << ptEmp.age << endl;
+    out << "Hourly Rate: " << ptEmp.hourlyRate << endl;
+    out << "Hours Worked: " << ptEmp.hoursWorked << endl;
+    out << "Salary: " << ptEmp.calculateSalary() << " $" << endl;
+    return out;
 }
