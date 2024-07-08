@@ -1,5 +1,6 @@
 #include "person.h"
 #include "input_validation.h"
+#include "screen.h"
 
 #include <ctime>
 #include <cstring>
@@ -43,28 +44,28 @@ void Person::setData()
     system("Cls");
 }
 
-
 // Setter methods
 void Person::setName()
 {
-    validate_input_char_array(name, 50, "Enter name: ");
+    validate_input_char_array(name, 50, "\nEnter Name: ");
     toUpper(name);
 }
 
 void Person::setDOB()
 {
-    cout << "<--------- Setting Date Of Birth Details --------->" << endl;
+    cout << "\n---- Setting Date Of Birth Details ----\n"
+         << endl;
     dob.setDate();
 }
 
 void Person::setPhoneNumber()
 {
-    validate_input_phone_number(phoneNumber, "Enter phone number: ");
+    validate_input_phone_number(phoneNumber, "\nEnter Phone Number: ");
 }
 
 void Person::setAddress()
 {
-    validate_input_char_array_with_numbers(address, 100, "Enter address: ");
+    validate_input_char_array_with_numbers(address, 100, "\nEnter Address: ");
     toUpper(address);
 }
 

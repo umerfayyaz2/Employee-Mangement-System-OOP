@@ -80,7 +80,7 @@ void Employee::setJobRole()
 {
     // cin.clear();
     // clear_input_buffer();
-    validate_input_char_array(jobRole, 30, "Enter role name: ");
+    validate_input_char_array(jobRole, 30, "\nEnter Employee's Role Name: ");
 
     toUpper(jobRole);
 }

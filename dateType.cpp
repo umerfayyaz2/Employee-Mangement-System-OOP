@@ -58,17 +58,17 @@ void dateType::setDate()
     {
         try
         {
-            validate_input_int(month, "Enter month: ", "Invalid month, please try again...");
+            validate_input_int(month, "\nEnter Month: ", "\nInvalid Month, please try again...");
             if (month < 1 || month > 12)
-                throw invalid_argument("Invalid month, please try again...");
+                throw invalid_argument("\nInvalid Month, please try again...");
 
-            validate_input_int(year, "Enter year: ", "Invalid year, please try again...");
+            validate_input_int(year, "\nEnter Year: ", "\nInvalid Year, please try again...");
             if (year < 1980 || year > 2024)
-                throw invalid_argument("Invalid year, please try again...");
+                throw invalid_argument("\nInvalid Year, please try again...");
 
-            validate_input_int(day, "Enter day: ", "Invalid day, please try again...");
+            validate_input_int(day, "\nEnter Day: ", "\nInvalid Day, please try again...");
             if (day < 1 || day > 31)
-                throw invalid_argument("Invalid day, please try again...");
+                throw invalid_argument("\nInvalid Day, please try again...");
 
             bool isValidDay = true;
             if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)

@@ -31,7 +31,7 @@ void PartTimeEmployee::setHourlyRate()
 {
     while (true)
     {
-        validate_input_double(hourlyRate, "Enter hourly rate (max range 80 $): ", "Invalid hourly rate, please try again...");
+        validate_input_double(hourlyRate, "\n\nEnter Hourly Rate (max range 80 $): ", "\nInvalid Hourly Rate, please try again...");
 
         if (hourlyRate >= 0 && hourlyRate <= 80)
             break;
@@ -42,7 +42,7 @@ void PartTimeEmployee::setHoursWorked()
 {
     while (true)
     {
-        validate_input_int(hoursWorked, "Enter the hours worked (max 169 hours): ", "Invalid working hours, please try again...");
+        validate_input_int(hoursWorked, "\n\nEnter the Hours Worked (max 160 hours): ", "\nInvalid Working Hours, please try again...");
 
         if (hoursWorked > 0 && hoursWorked < 160)
             break;
@@ -51,7 +51,6 @@ void PartTimeEmployee::setHoursWorked()
 
 void PartTimeEmployee::set_partime_employee_details()
 {
-    cout << "Setting Part-Time Employee Details: " << endl;
     this->setName();
     this->setDOB();
     this->setPhoneNumber();

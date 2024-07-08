@@ -5,6 +5,7 @@
 #include "input_validation.h"
 #include "FullTimeEmployee.h"
 #include "PartTimeEmployee.h"
+#include "screen.h"
 
 #define MAX_EMPLOYEES 10
 
@@ -59,24 +60,31 @@ void EmployeeManager::addEmployee()
     int choice;
     while (true)
     {
-        cout << "Enter 1 to add part time employee.\n"
-                "Enter 2 to add full time employee.\n";
+        CLEAR_SCREEN();
+        cout << "---- Please Select An Option ----\n\n";
 
-        validate_input_int(choice, "Your choice: ", "Invalid choice, please try again...");
+        cout << "1- Enter Full-Time Employee\n\n"
+                "2- Enter Part-Time Employee\n\n";
+
+        validate_input_int(choice, "Please Enter Your Choice Here: ", "Invalid Choice, please try again...");
 
         switch (choice)
         {
         case 1:
         {
-            PartTimeEmployee *ptEmployee = new PartTimeEmployee();
-            partTimeEmployees[numberOfPartTimeEmployees++] = ptEmployee;
+            CLEAR_SCREEN();
+            cout << "----Setting Full-Time Employee Details----\n\n";
+            FullTimeEmployee *ftEmployee = new FullTimeEmployee();
+            fullTimeEmployees[numberOfFullTimeEmployees++] = ftEmployee;
             saveEmployees();
             return;
         }
         case 2:
         {
-            FullTimeEmployee *ftEmployee = new FullTimeEmployee();
-            fullTimeEmployees[numberOfFullTimeEmployees++] = ftEmployee;
+            CLEAR_SCREEN();
+            cout << "----Setting Part-Time Employee Details----\n\n";
+            PartTimeEmployee *ptEmployee = new PartTimeEmployee();
+            partTimeEmployees[numberOfPartTimeEmployees++] = ptEmployee;
             saveEmployees();
             return;
         }
@@ -95,12 +103,15 @@ void EmployeeManager::updateEmployee()
 
     while (true)
     {
-        validate_input_int(choice, "1. Update Full Time Employee\n2. Update Part Time Employee\nYour choice: ", "Invalid choice, please try again...");
+        CLEAR_SCREEN();
+        cout << "---- Please Select An Option ----\n\n";
+        validate_input_int(choice, "1. Update Full Time Employee\n2. Update Part Time Employee\nPlease Enter Your Choice Here: ", "Invalid choice, please try again...");
 
         switch (choice)
         {
         case 1:
-            validate_input_int(empId, "Enter employee id to update employee: ", "Invalid employee id, please try again...");
+            CLEAR_SCREEN();
+            validate_input_int(empId, "Enter Full-Time Employee's ID To Update: ", "\nInvalid Employee ID, please try again...");
 
             for (int i = 0; i < numberOfFullTimeEmployees; i++)
             {
@@ -111,10 +122,11 @@ void EmployeeManager::updateEmployee()
                     return;
                 }
             }
-            cout << "No full time employee found against id " << empId << "\n";
+            cout << "No Full-Time employee found against ID " << empId << "\n";
             return;
         case 2:
-            validate_input_int(empId, "Enter employee id to update employee: ", "Invalid employee id, please try again...");
+            CLEAR_SCREEN();
+            validate_input_int(empId, "Enter Part-Time Employee's ID To Update: ", "\nInvalid Employee ID, please try again...");
 
             for (int i = 0; i < numberOfPartTimeEmployees; i++)
             {
@@ -125,10 +137,10 @@ void EmployeeManager::updateEmployee()
                     return;
                 }
             }
-            cout << "No part time employee found against id " << empId << "\n";
+            cout << "\n\nNo part time employee found against id " << empId << "\n";
             return;
         default:
-            cout << "Invalid choice, please enter between (1-2)...\n";
+            cout << "\nInvalid choice, please enter between (1-2)...\n";
             break;
         }
     }
@@ -136,53 +148,61 @@ void EmployeeManager::updateEmployee()
 
 void EmployeeManager::deleteEmployee()
 {
+
     loadEmployees();
     int choice, empId;
 
     while (true)
     {
-        validate_input_int(choice, "1. Delete Full Time Employee\n2. Delete Part Time Employee\nYour choice: ", "Invalid choice, please try again...");
+        CLEAR_SCREEN();
+        cout << "---- Please Select An Option ----\n\n";
+        validate_input_int(choice, "1. Delete Full Time Employee\n2. Delete Part Time Employee\nPlease Enter Your Choice Here: ", "\nInvalid choice, please try again...");
 
         switch (choice)
         {
         case 1:
-            validate_input_int(empId, "Enter employee id to delete employee: ", "Invalid employee id, please try again...");
+
+            validate_input_int(empId, "Enter Employee ID to delete employee: ", "\nInvalid Employee ID, please try again...");
 
             for (int i = 0; i < numberOfFullTimeEmployees; i++)
             {
                 if (fullTimeEmployees[i]->getId() == empId)
                 {
                     delete fullTimeEmployees[i];
-                    for (int j = i; j < numberOfFullTimeEmployees; j++)
+                    for (int j = i; j < numberOfFullTimeEmployees - 1; j++)
                     {
                         fullTimeEmployees[j] = fullTimeEmployees[j + 1];
                     }
+                    numberOfFullTimeEmployees--;
                     saveEmployees();
+                    cout << "Full time employee with ID " << empId << " deleted successfully.\n";
                     return;
                 }
             }
-            cout << "No full time employee found against id " << empId << "\n";
+            cout << "No full time employee found with ID " << empId << "\n";
             return;
         case 2:
-            validate_input_int(empId, "Enter employee id to delete employee: ", "Invalid employee id, please try again...");
+            validate_input_int(empId, "Enter Employee ID to delete employee: ", "\nInvalid Employee ID, please try again...");
 
             for (int i = 0; i < numberOfPartTimeEmployees; i++)
             {
                 if (partTimeEmployees[i]->getId() == empId)
                 {
                     delete partTimeEmployees[i];
-                    for (int j = i; j < numberOfPartTimeEmployees; j++)
+                    for (int j = i; j < numberOfPartTimeEmployees - 1; j++)
                     {
                         partTimeEmployees[j] = partTimeEmployees[j + 1];
                     }
+                    numberOfPartTimeEmployees--;
                     saveEmployees();
+                    cout << "Part time employee with ID " << empId << " Deleted successfully.\n";
                     return;
                 }
             }
-            cout << "No part time employee found against id " << empId << "\n";
+            cout << "No Part-Time employee found with ID " << empId << "\n";
             return;
         default:
-            cout << "Invalid choice, please enter between (1-2)...\n";
+            cout << "Invalid Choice, please enter between (1-2)...\n";
             break;
         }
     }
@@ -195,40 +215,44 @@ void EmployeeManager::viewEmployee()
 
     while (true)
     {
-        validate_input_int(choice, "1. View Full Time Employee\n2. View Part Time Employee\nYour choice: ", "Invalid choice, please try again...");
+        CLEAR_SCREEN();
+        cout << "---- Please Select An Option ----\n\n";
+        validate_input_int(choice, "1. View Full-Time Employee\n\n2. View Part-Time Employee\n\nPlease Enter Your Choice Here: ", "\nInvalid choice, please try again...");
 
         switch (choice)
         {
         case 1:
-            validate_input_int(empId, "Enter employee id to view employee: ", "Invalid employee id, please try again...");
+            validate_input_int(empId, "\nEnter Full-Time Employee ID to view employee: ", "\nInvalid Full-Time Employee ID, please try again...");
 
             for (int i = 0; i < numberOfFullTimeEmployees; i++)
             {
                 if (fullTimeEmployees[i]->getId() == empId)
                 {
                     // fullTimeEmployees[i]->displayInfo();
-                    cout << *fullTimeEmployees[i];
+                    cout << endl
+                         << *fullTimeEmployees[i];
                     return;
                 }
             }
-            cout << "No full time employee found against id " << empId << "\n";
+            cout << "No Full-Time employee found against id " << empId << "\n";
             return;
         case 2:
-            validate_input_int(empId, "Enter employee id to update employee: ", "Invalid employee id, please try again...");
+            validate_input_int(empId, "\nEnter Part-Time Employee Id to update employee: ", "\n\nInvalid Part-Time Employee Id, please try again...");
 
             for (int i = 0; i < numberOfPartTimeEmployees; i++)
             {
                 if (partTimeEmployees[i]->getId() == empId)
                 {
                     // partTimeEmployees[i]->displayInfo();
-                    cout << *partTimeEmployees[i];
+                    cout << endl
+                         << *partTimeEmployees[i];
                     return;
                 }
             }
-            cout << "No part time employee found against id " << empId << "\n";
+            cout << "No Part-Time employee found against id " << empId << "\n";
             return;
         default:
-            cout << "Invalid choice, please enter between (1-2)...\n";
+            cout << "\nInvalid Choice, please enter between (1-2)...\n";
             break;
         }
     }
@@ -237,14 +261,17 @@ void EmployeeManager::viewEmployee()
 void EmployeeManager::displayEmployees()
 {
     loadEmployees();
-
-    cout << "Displaying employees..." << endl;
-    cout << "Number of full-time employees: " << numberOfFullTimeEmployees << endl;
-    cout << "Number of part-time employees: " << numberOfPartTimeEmployees << endl;
+    CLEAR_SCREEN();
+    cout << "---- Displaying employees ----" << endl
+         << endl;
+    cout << "Number of Full-time employees: " << numberOfFullTimeEmployees << endl
+         << endl;
+    cout << "Number of Part-time employees: " << numberOfPartTimeEmployees << endl
+         << endl;
 
     if (numberOfFullTimeEmployees == 0 && numberOfPartTimeEmployees == 0)
     {
-        cout << "No full time and part time employees currently.\n";
+        cout << "No Full-Time and Part-Time Employees currently.\n";
         return;
     }
 
@@ -267,7 +294,7 @@ void EmployeeManager::saveEmployees()
     ofstream fout("FullTimeEmployees.dat", ios::binary | ios::trunc);
     if (!fout)
     {
-        cerr << "Error opening file FullTimeEmployees.dat for writing\n";
+        cerr << "\nError opening file FullTimeEmployees.dat for writing\n";
         return;
     }
 
@@ -276,7 +303,7 @@ void EmployeeManager::saveEmployees()
         fout.write(reinterpret_cast<const char *>(fullTimeEmployees[i]), sizeof(FullTimeEmployee));
         if (!fout)
         {
-            cerr << "Error writing full-time employee " << i << " to file\n";
+            cerr << "\nError writing full-time employee " << i << " to file\n";
             fout.close();
             return;
         }
@@ -287,7 +314,7 @@ void EmployeeManager::saveEmployees()
     ofstream fout2("PartTimeEmployees.dat", ios::binary | ios::trunc);
     if (!fout2)
     {
-        cerr << "Error opening file PartTimeEmployees.dat for writing\n";
+        cerr << "\nError opening file PartTimeEmployees.dat for writing\n";
         return;
     }
 
@@ -296,7 +323,7 @@ void EmployeeManager::saveEmployees()
         fout2.write(reinterpret_cast<const char *>(partTimeEmployees[i]), sizeof(PartTimeEmployee));
         if (!fout2)
         {
-            cerr << "Error writing part-time employee " << i << " to file\n";
+            cerr << "\nError writing part-time employee " << i << " to file\n";
             fout2.close();
             return;
         }

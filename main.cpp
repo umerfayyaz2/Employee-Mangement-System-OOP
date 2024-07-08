@@ -7,6 +7,7 @@
 #include "FullTimeEmployee.h"
 #include "PartTimeEmployee.h"
 #include "EmployeeManager.h"
+#include "screen.h"
 
 using namespace std;
 
@@ -32,7 +33,7 @@ void main_panel()
         while (true)
         {
                 // Clear the screen (Note: system() is not portable, consider using a cross-platform alternative in production)
-                system("cls");
+                CLEAR_SCREEN();
 
                 // Display the main menu
                 cout << setfill('=') << setw(50) << "=" << endl;
@@ -57,7 +58,7 @@ void main_panel()
                 case 1:
                 {
                         cout << "\n--- Adding New Employee ---\n"
-                                  << endl;
+                             << endl;
                         manager.addEmployee();
                         cout << "\nEmployee added successfully!" << endl;
                         break;
@@ -65,14 +66,14 @@ void main_panel()
                 case 2:
                 {
                         cout << "\n--- Viewing Employee Details ---\n"
-                                  << endl;
+                             << endl;
                         manager.viewEmployee();
                         break;
                 }
                 case 3:
                 {
                         cout << "\n--- Updating Employee Information ---\n"
-                                  << endl;
+                             << endl;
                         manager.updateEmployee();
                         cout << "\nEmployee information updated successfully!" << endl;
                         break;
@@ -80,15 +81,15 @@ void main_panel()
                 case 4:
                 {
                         cout << "\n--- Deleting Employee ---\n"
-                                  << endl;
+                             << endl;
                         manager.deleteEmployee();
-                        cout << "\nEmployee deleted successfully!" << endl;
+                        cout << "\nEmployee DSeleted successfully!" << endl;
                         break;
                 }
                 case 5:
                 {
                         cout << "\n--- Displaying All Employees ---\n"
-                                  << endl;
+                             << endl;
                         manager.displayEmployees();
                         break;
                 }

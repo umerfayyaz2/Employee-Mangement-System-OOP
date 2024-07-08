@@ -33,7 +33,7 @@ int FullTimeEmployee::calculateSalary() const
 void FullTimeEmployee::displayInfo() const
 {
     Employee::displayInfo();
-    cout << "Monthly Salary: " << monthlySalary << " $" << endl;
+    cout << "\nMonthly Salary: " << monthlySalary << " $" << endl;
 }
 
 void FullTimeEmployee::setMonthlySalary()
@@ -41,7 +41,7 @@ void FullTimeEmployee::setMonthlySalary()
     while (true)
     {
 
-        validate_input_int(monthlySalary, "Enter the salary (max 60k $): ", "Invalid salary, please try again...");
+        validate_input_int(monthlySalary, "\nEnter the salary (max 60k $): ", "\nInvalid salary, please try again...");
 
         if (monthlySalary > 0 && monthlySalary <= 60000)
             break;
