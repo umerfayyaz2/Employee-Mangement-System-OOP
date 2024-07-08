@@ -23,6 +23,7 @@ public:
     void setJobRole();
 
     int getId() const;
+    void setId();
 
     static int getNextId();
 };

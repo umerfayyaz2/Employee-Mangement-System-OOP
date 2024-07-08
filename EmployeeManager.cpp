@@ -55,12 +55,12 @@ int EmployeeManager::getNumberOfPartTimeEmployees()
 // crud
 void EmployeeManager::addEmployee()
 {
-    clear();
+    loadEmployees();
     int choice;
     while (true)
     {
-        cout << "To Enter Full-Time Employee Press --- 1\n"
-                "To Enter Part-Time Employee Press --- 2\n";
+        cout << "Enter 1 to add part time employee.\n"
+                "Enter 2 to add full time employee.\n";
 
         validate_input_int(choice, "Your choice: ", "Invalid choice, please try again...");
 
@@ -68,16 +68,15 @@ void EmployeeManager::addEmployee()
         {
         case 1:
         {
-
-            FullTimeEmployee *ftEmployee = new FullTimeEmployee();
-            fullTimeEmployees[numberOfFullTimeEmployees++] = ftEmployee;
+            PartTimeEmployee *ptEmployee = new PartTimeEmployee();
+            partTimeEmployees[numberOfPartTimeEmployees++] = ptEmployee;
             saveEmployees();
             return;
         }
         case 2:
         {
-            PartTimeEmployee *ptEmployee = new PartTimeEmployee();
-            partTimeEmployees[numberOfPartTimeEmployees++] = ptEmployee;
+            FullTimeEmployee *ftEmployee = new FullTimeEmployee();
+            fullTimeEmployees[numberOfFullTimeEmployees++] = ftEmployee;
             saveEmployees();
             return;
         }
@@ -90,6 +89,7 @@ void EmployeeManager::addEmployee()
 
 void EmployeeManager::updateEmployee()
 {
+    // clear();
     loadEmployees();
     int choice, empId;
 
@@ -107,6 +107,7 @@ void EmployeeManager::updateEmployee()
                 if (fullTimeEmployees[i]->getId() == empId)
                 {
                     fullTimeEmployees[i]->set_fulltime_employee_data();
+                    saveEmployees();
                     return;
                 }
             }
@@ -120,6 +121,7 @@ void EmployeeManager::updateEmployee()
                 if (partTimeEmployees[i]->getId() == empId)
                 {
                     partTimeEmployees[i]->set_partime_employee_details();
+                    saveEmployees();
                     return;
                 }
             }
@@ -155,6 +157,7 @@ void EmployeeManager::deleteEmployee()
                     {
                         fullTimeEmployees[j] = fullTimeEmployees[j + 1];
                     }
+                    saveEmployees();
                     return;
                 }
             }
@@ -172,6 +175,7 @@ void EmployeeManager::deleteEmployee()
                     {
                         partTimeEmployees[j] = partTimeEmployees[j + 1];
                     }
+                    saveEmployees();
                     return;
                 }
             }
@@ -258,7 +262,7 @@ void EmployeeManager::displayEmployees()
 void EmployeeManager::saveEmployees()
 {
 
-    ofstream fout("FullTimeEmployees.dat", ios::binary | ios::app);
+    ofstream fout("FullTimeEmployees.dat", ios::binary | ios::trunc);
     if (!fout)
     {
         cerr << "Error opening file FullTimeEmployees.dat for writing\n";
@@ -278,7 +282,7 @@ void EmployeeManager::saveEmployees()
     fout.close();
 
     // Save Part Time Employees
-    ofstream fout2("PartTimeEmployees.dat", ios::binary | ios::app);
+    ofstream fout2("PartTimeEmployees.dat", ios::binary | ios::trunc);
     if (!fout2)
     {
         cerr << "Error opening file PartTimeEmployees.dat for writing\n";

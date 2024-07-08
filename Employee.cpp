@@ -11,7 +11,7 @@ int Employee::getNextId()
 
 Employee::Employee() : Person()
 {
-    validate_input_int(id, "Enter employee ID: ", "Invalid ID, please try again...");
+    setId();
 }
 
 Employee::Employee(int value) : Person()
@@ -29,6 +29,35 @@ Employee::~Employee() {}
 int Employee::getId() const
 {
     return id;
+}
+
+void Employee::setId()
+{
+    int temp;
+    ifstream fin("EmployeeId.txt");
+    if (!fin)
+    {
+        validate_input_int(id, "Enter employee ID: ", "Invalid ID, please try again...");
+        ofstream fout("EmployeeId.txt");
+        fout << id;
+        fout.close();
+        return;
+    }
+    fin >> temp;
+    while (1)
+    {
+        validate_input_int(id, "Enter employee ID: ", "Invalid ID, please try again...");
+
+        if (id > temp)
+        {
+            break;
+        }
+        cout << "Employee cannot have duplicate id, please try again...\n";
+    }
+    fin.close();
+    ofstream fout("EmployeeId.txt");
+    fout << id;
+    fout.close();
 }
 
 void Employee::displayInfo()
@@ -50,8 +79,8 @@ const char *Employee::getJobRole()
 void Employee::setJobRole()
 {
     // cin.clear();
-    clear_input_buffer();
-    validate_input_char_array(jobRole, 50, "Enter role name: ");
+    // clear_input_buffer();
+    validate_input_char_array(jobRole, 30, "Enter role name: ");
 
     toUpper(jobRole);
 }

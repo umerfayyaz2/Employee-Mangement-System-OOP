@@ -53,7 +53,7 @@ void validate_input_char_array(char *str, int size, const string &promptMessage)
             while (str[strSize] != '\0')
                 strSize++;
 
-            if (cin.fail() || strSize == 0)
+            if (cin.fail())
             {
                 clear_input_buffer();
                 throw invalid_argument("Field input failed, too long..");
@@ -62,7 +62,7 @@ void validate_input_char_array(char *str, int size, const string &promptMessage)
             if (strSize == 0)
                 throw invalid_argument("Field cannot be empty, please try again...");
 
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < strSize; i++)
             {
                 if (isDigit(str[i]))
                     throw invalid_argument("Field cannot contain digits.");
@@ -91,7 +91,7 @@ void validate_input_char_array_with_numbers(char *str, int size, const string &p
             while (str[strSize] != '\0')
                 strSize++;
 
-            if (cin.fail() || strSize == 0)
+            if (cin.fail())
             {
                 clear_input_buffer();
                 throw invalid_argument("Field input failed, too long..");
