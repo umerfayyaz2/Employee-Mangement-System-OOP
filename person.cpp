@@ -72,15 +72,15 @@ void Person::setAddress()
 void Person::setAge()
 {
     // Calculate age based on current date and DOB
-    time_t now = time(0);
-    tm *currentTime = localtime(&now);
-    int currentYear = 1900 + currentTime->tm_year;
+    time_t now = time(0);                          // time_t is a type used to represent time in seconds since the epoch (00:00:00 UTC, January 1, 1970).
+    tm *currentTime = localtime(&now);             // tm is a structure holding a calendar date and time
+    int currentYear = 1900 + currentTime->tm_year; // gives the number of years since 1900 epoch standards
 
     age = currentYear - dob.getYear();
 
     // Adjust age if birthday hasn't occurred this year yet
     if (currentTime->tm_mon + 1 < dob.getMonth() ||
-        (currentTime->tm_mon + 1 == dob.getMonth() && currentTime->tm_mday < dob.getDay()))
+        (currentTime->tm_mon + 1 == dob.getMonth() && currentTime->tm_mday < dob.getDay())) // tm_mon = curr_month and tm_mday current day
     {
         age--;
     }
