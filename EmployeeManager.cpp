@@ -59,8 +59,8 @@ void EmployeeManager::addEmployee()
     int choice;
     while (true)
     {
-        cout << "Enter 1 to add part time employee.\n"
-                "Enter 2 to add full time employee.\n";
+        cout << "To Enter Full-Time Employee Press --- 1\n"
+                "To Enter Part-Time Employee Press --- 2\n";
 
         validate_input_int(choice, "Your choice: ", "Invalid choice, please try again...");
 
@@ -68,15 +68,16 @@ void EmployeeManager::addEmployee()
         {
         case 1:
         {
-            PartTimeEmployee *ptEmployee = new PartTimeEmployee();
-            partTimeEmployees[numberOfPartTimeEmployees++] = ptEmployee;
+
+            FullTimeEmployee *ftEmployee = new FullTimeEmployee();
+            fullTimeEmployees[numberOfFullTimeEmployees++] = ftEmployee;
             saveEmployees();
             return;
         }
         case 2:
         {
-            FullTimeEmployee *ftEmployee = new FullTimeEmployee();
-            fullTimeEmployees[numberOfFullTimeEmployees++] = ftEmployee;
+            PartTimeEmployee *ptEmployee = new PartTimeEmployee();
+            partTimeEmployees[numberOfPartTimeEmployees++] = ptEmployee;
             saveEmployees();
             return;
         }

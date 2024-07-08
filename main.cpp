@@ -57,7 +57,7 @@ void main_panel()
                 case 1:
                 {
                         cout << "\n--- Adding New Employee ---\n"
-                                  << endl;
+                             << endl;
                         manager.addEmployee();
                         cout << "\nEmployee added successfully!" << endl;
                         break;
@@ -65,22 +65,22 @@ void main_panel()
                 case 2:
                 {
                         cout << "\n--- Viewing Employee Details ---\n"
-                                  << endl;
+                             << endl;
                         manager.viewEmployee();
                         break;
                 }
                 case 3:
                 {
                         cout << "\n--- Updating Employee Information ---\n"
-                                  << endl;
-                        manager.updateEmployee();
+                             << endl;
+                        manager.updateEmployee(); // Update function need to be updated.
                         cout << "\nEmployee information updated successfully!" << endl;
                         break;
                 }
                 case 4:
                 {
                         cout << "\n--- Deleting Employee ---\n"
-                                  << endl;
+                             << endl;
                         manager.deleteEmployee();
                         cout << "\nEmployee deleted successfully!" << endl;
                         break;
@@ -88,7 +88,7 @@ void main_panel()
                 case 5:
                 {
                         cout << "\n--- Displaying All Employees ---\n"
-                                  << endl;
+                             << endl;
                         manager.displayEmployees();
                         break;
                 }
