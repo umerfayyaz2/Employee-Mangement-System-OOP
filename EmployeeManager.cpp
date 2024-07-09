@@ -11,6 +11,7 @@
 
 using namespace std;
 
+// static members initilization done here
 int EmployeeManager::numberOfFullTimeEmployees = 0;
 int EmployeeManager::numberOfPartTimeEmployees = 0;
 

@@ -73,7 +73,7 @@ void Person::setAge()
 {
     // Calculate age based on current date and DOB
     time_t now = time(0);                          // time_t is a type used to represent time in seconds since the epoch (00:00:00 UTC, January 1, 1970).
-    tm *currentTime = localtime(&now);             // tm is a structure holding a calendar date and time
+    tm *currentTime = localtime(&now);             // tm is a structure holding a calendar date and time and local time holds current time.
     int currentYear = 1900 + currentTime->tm_year; // gives the number of years since 1900 epoch standards
 
     age = currentYear - dob.getYear();

@@ -1,4 +1,5 @@
 #include "input_validation.h"
+#include <stdexcept>
 
 void clear_input_buffer()
 {

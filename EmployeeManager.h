@@ -9,7 +9,7 @@ class EmployeeManager
 private:
     static int numberOfFullTimeEmployees;
     static int numberOfPartTimeEmployees;
-    FullTimeEmployee **fullTimeEmployees;
+    FullTimeEmployee **fullTimeEmployees; // Arrays of pointers allow for dynamic memory management and polymorphism, as each pointer can point to objects of different derived classes.
     PartTimeEmployee **partTimeEmployees;
 
 public:

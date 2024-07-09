@@ -8,7 +8,7 @@
 #include "PartTimeEmployee.h"
 #include "EmployeeManager.h"
 #include "screen.h"
-
+// 1,427 lines of code
 using namespace std;
 
 void main_panel();
@@ -19,11 +19,6 @@ int main()
 
         return 0;
 }
-
-#include <iostream>
-#include <iomanip>
-#include "EmployeeManager.h"
-#include "input_validation.h"
 
 void main_panel()
 {

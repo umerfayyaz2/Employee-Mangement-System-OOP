@@ -6,26 +6,26 @@
 class Employee : public Person
 {
 protected:
-    int id;
-    static int count;
-    char jobRole[30];
+    int id;           // Unique ID for each employee
+    static int count; // Static variable to keep track of the number of employees
+    char jobRole[30]; // Job role of the employee
 
 public:
-    Employee(); // Default constructor
-    Employee(int);
-    Employee(const Employee &other);
-    virtual ~Employee(); // Virtual destructor
+    Employee();                      // Default constructor
+    Employee(int);                   // Constructor with an integer parameter
+    Employee(const Employee &other); // Copy constructor
+    virtual ~Employee();             // Virtual destructor
 
-    virtual int calculateSalary() const = 0; // Pure virtual function
-     void displayInfo() const override;              // Virtual function
+    virtual int calculateSalary() const = 0; // Pure virtual function for calculating salary
+    void displayInfo() const override;       // Override the displayInfo method from Person
 
-    const char *getJobRole();
-    void setJobRole();
+    const char *getJobRole(); // Getter for jobRole
+    void setJobRole();        // Setter for jobRole
 
-    int getId() const;
-    void setId();
+    int getId() const; // Getter for id
+    void setId();      // Setter for id
 
-    static int getNextId();
+    static int getNextId(); // Static method to get the next employee ID
 
     // friend ostream &operator<<(ostream &out, const Employee &emp);
 };

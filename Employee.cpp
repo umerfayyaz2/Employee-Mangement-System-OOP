@@ -11,7 +11,7 @@ int Employee::getNextId()
 
 Employee::Employee() : Person()
 {
-    setId();
+    setId(); // calls function when an the class object is instantiated.
 }
 
 Employee::Employee(int value) : Person()
